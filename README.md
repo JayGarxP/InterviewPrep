@@ -1,0 +1,2 @@
+# InterviewPrep
+I implement common interview programming questions from Geeks for Geeks and Crack the Coding Interview and other random sources, in the attempt to speed up my whiteboard code and understand programming patterns and algos enough to implement them in most languages on whiteboard. Will try to make this resource useful to other people as well with links and high level explanations of thought process and pseudocode
