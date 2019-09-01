@@ -1,0 +1,49 @@
+function regexVar() {
+    /*
+     * Declare a RegExp object variable named 're'
+     * It must match a string that starts and ends with the same vowel (i.e., {a, e, i, o, u})
+     */
+    // ^ beginning  must start with vowel  [any 1 of this set]
+    // $ end        must end with SAME vowel        ([set]) \n == same set!!!
+    // .* 0+ of any character
+    // https://regex101.com/
+    // ^([aeiou]).*\1$           backslash n \n will let you reuse previous parenthesis groupings, 1st from left is 1 next would be 2 etc.
+    // had to add extra octal escape slash to pass through strict mode
+    var reggie = "^([aeiou]).*\\1$";
+    const re = new RegExp(reggie);
+
+    // if you want to allow single characters
+    //reggie = "(^([aeiou]).*\2$|^[aeiou]$)";
+    /*
+     * Do not remove the return statement
+     */
+    return re;
+}
+
+
+function main() {
+    const re = regexVar();
+    const s = readLine();
+    
+    console.log(re.test(s));
+}
+
+ /*
+     * Declare a RegExp object variable named 're'
+     * It must match a string that starts with 'Mr.', 'Mrs.', 'Ms.', 'Dr.', or 'Er.', 
+     * followed by one or more letters.
+     
+    const re = new RegExp('(Mr|Mrs|Ms|Dr|Er)\\.[a-zA-Z]+$');
+	
+	*/
+	
+	 /*
+     * Declare a RegExp object variable named 're'
+     * It must match ALL occurrences of numbers in a string.
+     * /pattern/flags
+     * RegExp(string literal expression with escape\, string literal flag letters)
+     
+    const re = new RegExp('(\\d)+','g'); // global flag to match ALL hits
+	*/
+    
+    

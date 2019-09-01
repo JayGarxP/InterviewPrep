@@ -1,0 +1,29 @@
+/* https://www.hackerrank.com/challenges/js10-try-catch-and-finally/problem
+ * Complete the reverseString function
+ * Use console.log() to print to stdout.
+ */
+function reverseString(s) {
+    var reversedStrang = "";
+    try { 
+        reversedStrang = s.split('').reverse().join('');
+    }
+    catch (e) {
+        console.log(e.message);
+        reversedStrang = s;
+     }
+    finally
+    { 
+        console.log(reversedStrang);
+    }
+}
+
+// Reversing a string in javascript
+//function reverse(s) {
+//    return s.split('').reverse().join('');
+//}
+
+//fastest way:
+//function reverse(s) {
+//  for (var i = s.length - 1, o = ''; i >= 0; o += s[i--]) { }
+//  return o;
+//}

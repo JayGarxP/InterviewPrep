@@ -1,0 +1,87 @@
+/* https://www.hackerrank.com/challenges/js10-objects/problem
+ * Complete the Rectangle function
+ *  			js objects using the 'new' keyword on UpperCamelCase functions
+ */
+function Rectangle(a, b) {
+    this.length = a;
+    this.width = b;
+    
+        this.area = this.length * this.width;
+        this.perimeter = 2 * this.length + 2 * this.width;
+    
+}
+
+
+function main() {
+    const a = +(readLine());
+    const b = +(readLine());
+    
+    const rec = new Rectangle(a, b);
+    
+    console.log(rec.length);
+    console.log(rec.width);
+    console.log(rec.perimeter);
+    console.log(rec.area);
+}
+
+/* javascript classes:
+*
+ * Implement a Polygon class with the following properties:
+ * 1. A constructor that takes an array of integer side lengths.
+ * 2. A 'perimeter' method that returns the sum of the Polygon's side lengths.
+
+class Polygon {
+    constructor(sideLens) {
+        this.sideLens = sideLens; // TODO: validate as integer array
+    }
+
+    perimeter() {
+        let perim = 0;
+        for (let i = 0; i < this.sideLens.length; i++)
+        { 
+            perim += this.sideLens[i];
+        }
+        return perim;
+     }
+
+ }
+
+////////////////////////////
+
+class Rectangle {
+    constructor(w, h) {
+        this.w = w;
+        this.h = h;
+    }
+}
+
+/*
+ *  Write code that adds an 'area' method to the Rectangle class' prototype
+ */
+Rectangle.prototype.area = function () {
+    return this.w * this.h;
+}
+/*
+ * Create a Square class that inherits from Rectangle and implement its class constructor
+ */
+class Square extends Rectangle {
+    constructor(w) {
+        super(w, w);
+    }
+    
+ }
+
+
+if (JSON.stringify(Object.getOwnPropertyNames(Square.prototype)) === JSON.stringify([ 'constructor' ])) {
+    const rec = new Rectangle(3, 4);
+    const sqr = new Square(3);
+    
+    console.log(rec.area());
+    console.log(sqr.area());
+} else {
+    console.log(-1);
+    console.log(-1);
+}
+
+
+*/
