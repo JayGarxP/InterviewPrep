@@ -1,0 +1,46 @@
+/******************************************************************************
+
+          Online C++ Compiler.  https://www.onlinegdb.com/online_c++_compiler
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+
+using namespace std;
+
+void FizzBuzz (int);
+
+int main()
+{
+    FizzBuzz(100);
+}
+
+// C++ fizz buzz but for RightPoint
+void FizzBuzz (int max)
+{
+	for(int i = 1; i < max + 1; i++  )
+	{	 
+		if (i % 15 == 0)
+		{
+			cout << "rightpoint";
+		}
+		else if(i % 3 == 0)
+		{
+				
+				cout << "right";
+		} 
+		else if(i % 5 == 0)
+		{
+				
+				cout << "point";
+		}else
+		{
+			cout << i;
+		}
+
+	cout << endl;
+	
+    }
+}
