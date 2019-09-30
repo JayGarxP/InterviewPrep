@@ -1,0 +1,56 @@
+// Pea brain math challenge
+/*
+In a certain election race, all of the 8,400 votes were cast for either candidate A or candidate B. 
+If votes for candidate A and votes for candidate B were cast in a 4 to 3 ratio, 
+how many votes were cast for candidate A?
+*/
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+		Console.WriteLine("Hello World");
+		Console.WriteLine("A Votes: " + ComputeRatio(8400, (4.0/3.0)).ToString());
+		Console.WriteLine("A Votes, big brain: " + ComputeRatioComponent(8400, 4, 3));
+	}
+	
+	// 8400 votes total for A or B; A:B ratio is 4:3, solve for A and B
+	public static double ComputeRatio(int totalVotes, double ratioAtoB)
+	{
+	   double aVotes = 0;
+		
+	   double ratioFound = 0;
+		double testA = (totalVotes / 2) + 1;
+		double testB = (totalVotes / 2) - 1;
+		
+		while(ratioAtoB != ratioFound)
+		{
+		  ratioFound = testA / testB;
+			if(ratioFound < ratioAtoB)
+			{
+				// ratio is smaller than target ratio, so increase numerator, decrease denominator
+				testA++;
+				testB--;
+			}else if(ratioFound > ratioAtoB)
+			{
+			   testB++;
+				testA--;
+			}	
+		}
+		
+		return testA;
+		
+	}
+	
+	// part:part::whole
+	// 4:3::7
+	// 8400 / 7 = x unit 1200
+	// A = 4x == 4800
+	public static double ComputeRatioComponent(int totalVotes, int proportionA, int proportionB)
+	{
+	  int whole = proportionA + proportionB;
+		double propotionUnit = (double)totalVotes / (double)whole;
+		return propotionUnit * proportionA;
+	}
+}
