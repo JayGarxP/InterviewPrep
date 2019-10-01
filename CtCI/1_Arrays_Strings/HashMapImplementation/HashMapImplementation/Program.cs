@@ -18,6 +18,7 @@ namespace HashMapImplementation
         static Hashtable userInfoHash;
         static List<UserInfo> userInfoList;
         static Stopwatch SW;
+        const int maxSizeofHashTable = 5000000 ;
     
         static void Main(string[] args)
         {
@@ -25,8 +26,10 @@ namespace HashMapImplementation
             userInfoList = new List<UserInfo>();
             SW = new Stopwatch();
 
+            int deepestQuarterSizeofHashTable = (int)(maxSizeofHashTable * 0.75);
+
             // Add to hashtable and list
-            for (int i = 0; i < 5000000; i++)
+            for (int i = 0; i < maxSizeofHashTable; i++)
             {
                 // add useri value with key i
                 userInfoHash.Add(i, "user" + i);
@@ -34,27 +37,43 @@ namespace HashMapImplementation
                 userInfoList.Add(new UserInfo(i, "user" + i));
             }
 
+            Console.WriteLine("Testing List<UserInfo> with full lookup range using brute force");
+            var averageLookupTimeinMS = AverageLookupTimeRoughEstimate(1, maxSizeofHashTable, GetUserFromList_BruteForceSearch, 404);
+            Console.WriteLine("AVG time taken to retrieve FROM LIST full range brute force  "
+                + string.Format("{0:0.##}", averageLookupTimeinMS.ToString()) + " ms\n\n");
 
-            Console.WriteLine(AverageLookupTimeRoughEstimate(1, 2000000, GetUserFromList_Find).ToString());   
 
-            //// remove from hashtable
-            //if (userInfoHash.ContainsKey(0))
-            //{
-            //    userInfoHash.Remove(0);
-            //}
+            Console.WriteLine("Testing List<UserInfo> with skewed deep lookup range using brute force");
+            averageLookupTimeinMS = AverageLookupTimeRoughEstimate(deepestQuarterSizeofHashTable, maxSizeofHashTable, GetUserFromList_BruteForceSearch, 404);
+            Console.WriteLine("AVG time taken to retrieve FROM LIST deepest 75% range brute force  "
+                + string.Format("{0:0.##}", averageLookupTimeinMS.ToString()) + " ms\n\n");
 
-            //// setting value
-            //if (userInfoHash.ContainsKey(1))
-            //{
-            //    userInfoHash[1] = "replacementName";
-            //}
 
-            //// Looping through hashtable
-            //foreach (DictionaryEntry entry in userInfoHash)
-            //{
-            //    Console.WriteLine("Key: " + entry.Key + 
-            //        " // Value: " + entry.Value);
-            //}
+            Console.WriteLine("Testing List<UserInfo> with full lookup range using List.Find()");
+            averageLookupTimeinMS = AverageLookupTimeRoughEstimate(1, maxSizeofHashTable, GetUserFromList_Find, 404);
+            Console.WriteLine("AVG time taken to retrieve FROM LIST full range with Find()  "
+                + string.Format("{0:0.##}", averageLookupTimeinMS.ToString()) + " ms\n\n");
+
+            Console.WriteLine("Testing List<UserInfo> with skewed deep lookup range using List.Find()");
+            averageLookupTimeinMS = AverageLookupTimeRoughEstimate(deepestQuarterSizeofHashTable, maxSizeofHashTable, GetUserFromList_Find, 404);
+            Console.WriteLine("AVG time taken to retrieve FROM LIST deepest 75% range with Find()  "
+                + string.Format("{0:0.##}", averageLookupTimeinMS.ToString()) + " ms\n\n");
+
+
+            Console.WriteLine("Testing Hashtable<UserInfo> with full lookup range");
+            averageLookupTimeinMS = AverageLookupTimeRoughEstimate(1, maxSizeofHashTable, GetUserFromHashTable, 404);
+            Console.WriteLine("AVG time taken to retrieve FROM HASHTABLE full range  "
+                + string.Format("{0:0.##}", averageLookupTimeinMS.ToString()) + " ms\n\n");
+
+            Console.WriteLine("Testing Hashtable<UserInfo> with skewed deep lookup range");
+            averageLookupTimeinMS = AverageLookupTimeRoughEstimate(deepestQuarterSizeofHashTable, maxSizeofHashTable, GetUserFromHashTable, 404);
+            Console.WriteLine("AVG time taken to retrieve FROM HASHTABLE deepest 75% range  "
+                + string.Format("{0:0.##}", averageLookupTimeinMS.ToString()) + " ms\n\n");
+
+
+
+
+
 
 
 
@@ -72,11 +91,11 @@ namespace HashMapImplementation
            Key is an indexer
            Value is accessed by key; Value = Hashtable[key];
            Hashtables are best collection for lookup times, every value has unique key, O(1) constant time to lookup
-
+           Default Hashtable in C# uses Dictionary, can foreach DictionaryEntry in Hashtable{}
          
          */
 
-            // brute force list search
+        // brute force list search
         public static string GetUserFromList_BruteForceSearch(int userId)
         {
             for (int i = 0; i < userInfoList.Count; i++)
@@ -115,7 +134,6 @@ namespace HashMapImplementation
             float deltaTime = 0f;
             float averageTime = 0f;
 
-            //int cycles = 5;
             int cycle = 0;
             string userName = string.Empty;
 
@@ -127,8 +145,6 @@ namespace HashMapImplementation
                 // set a starting timestamp
                 startTime = SW.ElapsedMilliseconds;
                 // perform time sensitive operation
-                //userName = GetUserFromList_BruteForceSearch(randomUser);
-                // userName = userInfoList.Find(x => x.userId == randomUser).userName;
                 userName = lookupFunction(randomUser); // ACTUALLY WORKING WOW!!!
 
                 // set an ending timestamp
@@ -141,15 +157,6 @@ namespace HashMapImplementation
                 //Console.WriteLine("Time taken to retrieve " + userName + " FROM LIST "
                 //    + string.Format("{0:0.##}", deltaTime) + "ms");
 
-
-                //// set a starting timestamp
-                //startTime = SW.ElapsedMilliseconds;
-                //// perform time sensitive operation
-                //userName = (string)userInfoHash[randomUser];
-                //// set an ending timestamp
-                //endTime = SW.ElapsedMilliseconds;
-                //// print out the change in time
-                //deltaTime = endTime - startTime;
 
                 //Console.WriteLine("Time taken to retrieve " + userName + " FROM H@$HTABLE "
                 //    + string.Format("{0:0.##}", deltaTime) + "ms");
