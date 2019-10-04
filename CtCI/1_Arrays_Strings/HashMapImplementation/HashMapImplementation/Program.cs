@@ -87,12 +87,16 @@ namespace HashMapImplementation
 
         }
 
-        /* Hashtable is a collection of key value pairs
+        /* Hashtable is a collection of key value pairs (associative array)
            Key is an indexer
            Value is accessed by key; Value = Hashtable[key];
            Hashtables are best collection for lookup times, every value has unique key, O(1) constant time to lookup
            Default Hashtable in C# uses Dictionary, can foreach DictionaryEntry in Hashtable{}
          
+            Hash function maps a key to a unique index where a value is held; the same key will map to the same value index every time
+            If the hash function maps to an occupied value index, that is a 'collision', can resolve with chain links on that index or larger table
+            Usually key is stored with value in memory like a 'header'
+
          */
 
         // brute force list search
