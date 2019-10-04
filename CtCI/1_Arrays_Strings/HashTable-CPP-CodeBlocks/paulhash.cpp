@@ -1,5 +1,7 @@
 #include "paulhash.h"
-
+// crypto++ v8.1 open source library
+//#include "cryptlib.h"
+//#include "sha3.h"
 #include <iostream>
 
 PaulHash::PaulHash()

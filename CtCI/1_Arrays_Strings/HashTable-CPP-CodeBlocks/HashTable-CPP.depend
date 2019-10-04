@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1570154969 source:c:\users\jpjoh\desktop\interviewprep\ctci\1_arrays_strings\hashmapimplementation\hashtable-cpp\paulhash.cpp
+	"paulhash.h"
+	<iostream>
+
+1570149809 c:\users\jpjoh\desktop\interviewprep\ctci\1_arrays_strings\hashmapimplementation\hashtable-cpp\paulhash.h
+	<string>
+
+1570156316 source:c:\users\jpjoh\desktop\interviewprep\ctci\1_arrays_strings\hashmapimplementation\hashtable-cpp\main.cpp
+	"paulhash.h"
+	<iostream>
+	<cstdlib>
+	<string>
+	"cryptlib.h"
+	"sha3.h"
+
