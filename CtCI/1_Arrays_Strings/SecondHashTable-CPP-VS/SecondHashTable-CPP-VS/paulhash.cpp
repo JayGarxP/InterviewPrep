@@ -1,8 +1,6 @@
 #include "pch.h"
 #include "paulhash.h"
 
-#include <iostream>
-
 PaulHash::PaulHash()
 {
     // allocate array of HTitems
@@ -81,36 +79,45 @@ void PaulHash::AddItem(std::string name, std::string drink)
 }
 
 //// in code blocks highlight -> edit -> Uncomment (CTRL+SHIFT+X)
-//int PaulHash::Hash(std::string key)
-//{
-//    int index;
-//
-//    int hashu = 0;
-//
-//    for(int i = 0; i < key.length(); i++)
-//    {
-//        // accumulate ascii values of key chars into hashu variable
-//        hashu = hashu + (int)key[i];
-//        //std::cout << "hash = " << hashu << std::endl;
-//    }
-//
-//    // basic hash function to modulo ascii total of key string by max tablesize
-//    index = hashu % tableSize;
-//
-//    return index;
-//}
-
-
+//// VS CTRL+K then U
 int PaulHash::Hash(std::string key)
 {
     int index;
 
+    //int hashu = 0;
+
+    //for(int i = 0; i < key.length(); i++)
+    //{
+    //    // accumulate ascii values of key chars into hashu variable
+    //    hashu = hashu + (int)key[i];
+    //    //std::cout << "hash = " << hashu << std::endl;
+    //}
+
+    //// basic hash function to modulo ascii total of key string by max tablesize
+    //index = hashu % tableSize;
+
+	index = HashwithSha(key);
+
+    return index;
+}
+
+
+int PaulHash::HashwithSha(std::string key)
+{
+    int index;
+
+	// create a new hashing object   
+	SHA256 sha256;
+	// hashing an std::string   
+	std::string shawdKey = sha256(key);
+
     int hashu = 0;
 
-    for(int i = 0; i < key.length(); i++)
+	// Only have the length to speed up this proof of concept.
+    for(int i = 0; i < shawdKey.length() / 2; i++)
     {
         // accumulate ascii values of key chars into hashu variable
-        hashu = hashu + (int)key[i];
+        hashu = hashu + (int)shawdKey[i];
         //std::cout << "hash = " << hashu << std::endl;
     }
 

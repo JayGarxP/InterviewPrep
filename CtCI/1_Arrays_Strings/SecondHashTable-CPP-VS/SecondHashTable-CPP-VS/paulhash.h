@@ -30,6 +30,7 @@ private:
 
 public:
     int Hash(std::string key);
+	int HashwithSha(std::string key);
     PaulHash();
     ~PaulHash();
     void deleteList(const HTitem* head);

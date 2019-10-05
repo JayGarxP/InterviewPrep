@@ -8,7 +8,9 @@
 
 #ifndef PCH_H
 #define PCH_H
-
-// TODO: add headers that you want to pre-compile here
+#include "sha256.h" // SHA2 program https://create.stephan-brumme.com/hash-library/
+#include <iostream>
+#include <cstdlib>
+#include <string>
 
 #endif //PCH_H
