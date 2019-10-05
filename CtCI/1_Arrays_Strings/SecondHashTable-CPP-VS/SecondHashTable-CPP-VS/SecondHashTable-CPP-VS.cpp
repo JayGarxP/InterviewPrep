@@ -5,6 +5,10 @@
  Removed memory leaks and improved the hash function
  Going to port to C# and use this cpp hashtable in C# with C++/CLI DLL
  deleted the code blocks solution on 10/4/2019 since it could not build crypto++
+ Going to try a cool portable hash-library from Stephan I found
+ https://create.stephan-brumme.com/hash-library/
+ Just download and include the sha256.h and .cpp to run this project.
+ I am not including them because of possible license conflict, to be respectful and safe as possible.
 */
 
 #include "pch.h"
@@ -29,7 +33,8 @@ Hopefully someone will make a nuget package!
 */
 
 #include "paulhash.h"
-
+// SHA2 test program https://create.stephan-brumme.com/hash-library/
+#include "sha256.h"
 #include <iostream>
 #include <cstdlib>
 #include <string>
@@ -39,12 +44,8 @@ Hopefully someone will make a nuget package!
 // tried to run nmake, and cygwin makes, did not spit out usable .dll or .lib files or .o files
 // Oddly this same .cb codeblocks project builds on ubuntu...
 
-
-
 int main()
 {
-
-
 		PaulHash PaulTable;
 		//PaulTable.PrintTable();
 
@@ -70,7 +71,23 @@ int main()
 		//     PaulTable.RemoveItem("Maria");
 		//     PaulTable.PrintItemsInIndex(0);
 
-
+		  // create a new hashing object   
+		SHA256 sha256;   
+		  // hashing an std::string   
+		std::cout << sha256("Hello World") << std::endl;   // => a591a6d40bf420404a011733cfb7b190d62c65bf0bcda32b57b277d9ad9f146e   
+														   // hashing a buffer of bytes   
+		const char* buffer = "How are you";   
+		std::cout << sha256(buffer, 11) << std::endl;   // => 9c7d5b046878838da72e40ceb3179580958df544b240869b80d0275cc07209cc   
+														
+														// or in a streaming fashion (re-use "How are you")   
+		SHA256 sha256stream;   
+		const char* url = "create.stephan-brumme.com"; 
+		// 25 bytes   
+		int step = 5;   
+		for (int i = 0; i < 25; i += step)     
+			sha256stream.add(url + i, step); 
+		// add five bytes at a time   
+		std::cout << sha256stream.getHash() << std::endl;   // => 82aa771f1183c52f973c798c9243a1c73833ea40961c73e55e12430ec77b69f6
 
 			return 0;
 		

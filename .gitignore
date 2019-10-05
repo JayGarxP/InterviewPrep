@@ -350,3 +350,5 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+/CtCI/1_Arrays_Strings/SecondHashTable-CPP-VS/SecondHashTable-CPP-VS/sha256.cpp
+/CtCI/1_Arrays_Strings/SecondHashTable-CPP-VS/SecondHashTable-CPP-VS/sha256.h

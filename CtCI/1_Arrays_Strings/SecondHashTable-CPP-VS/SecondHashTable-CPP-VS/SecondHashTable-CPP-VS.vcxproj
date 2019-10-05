@@ -154,6 +154,7 @@
   <ItemGroup>
     <ClInclude Include="paulhash.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="sha256.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="paulhash.cpp" />
@@ -164,6 +165,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="SecondHashTable-CPP-VS.cpp" />
+    <ClCompile Include="sha256.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
