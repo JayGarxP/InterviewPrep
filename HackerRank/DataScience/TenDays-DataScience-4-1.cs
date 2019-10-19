@@ -17,7 +17,7 @@ x = 3;
 n = 6;
 // p(boy) = boychance / chancegirl + chance boy 
 // just that over everything it can be
-p = chanceBoy / (chanceGirl + chanceBoy);
+p = chanceBoy / (1 + chanceBoy);
 //Console.WriteLine("P is " + p.ToString());
 q = 1 - p;
 //Console.WriteLine("Q is " + q.ToString());
@@ -36,7 +36,7 @@ double binDist = 0;
   //for (int x = 3; x <= n; x++) {
    //         result += binomial(n, x, p);
     //    }
-for(int i = x; i < n; i++)
+for(int i = x; i <= n; i++)
 {
  binDist +=
     Combination(n, i) * 
@@ -75,22 +75,48 @@ public static int Factorial(int input)
     return answer;
 }
 
-public static double Combination(int nObjects, int rSampleSize)
+// public static double Combination(int nObjects, int rSampleSize)
+// {
+
+// int nFacto = Factorial(nObjects);
+// //Console.WriteLine(nFacto);
+// int xFacto = Factorial(rSampleSize);
+// //Console.WriteLine(xFacto);
+
+// int nxDiffFacto = Factorial((nObjects - rSampleSize));
+// //Console.WriteLine(nxDiffFacto);
+
+// double Combinations =  
+// (   
+// ((double)(nFacto)) 
+// / 
+// (   (double)( ((double)xFacto) * ((double)nxDiffFacto))    )
+// );
+
+// return Combinations;
+// }
+
+public static long Combination(int nObjects, int rSampleSize)
 {
 
-int nFacto = Factorial(nObjects);
+long nFacto = Factorial(nObjects);
 //Console.WriteLine(nFacto);
-int xFacto = Factorial(rSampleSize);
+long xFacto = Factorial(rSampleSize);
 //Console.WriteLine(xFacto);
 
-int nxDiffFacto = Factorial((nObjects - rSampleSize));
+long nxDiffFacto = Factorial((nObjects - rSampleSize));
 //Console.WriteLine(nxDiffFacto);
 
-double Combinations =  
+if(nxDiffFacto == 0)
+{
+    return 0;
+}
+
+long Combinations =  
 (   
-((double)(nFacto)) 
+((nFacto)) 
 / 
-(   (double)( ((double)xFacto) * ((double)nxDiffFacto))    )
+(( (xFacto) * (nxDiffFacto) ))
 );
 
 return Combinations;
