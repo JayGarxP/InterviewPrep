@@ -9,6 +9,16 @@
 #ifndef PCH_H
 #define PCH_H
 
-// TODO: add headers that you want to pre-compile here
+// Add headers that you want to pre-compile here
+// to check your C++ program for leaks: https://docs.microsoft.com/en-us/visualstudio/debugger/finding-memory-leaks-using-the-crt-library?view=vs-2019
+#define _CRTDBG_MAP_ALLOC
+#include <stdlib.h>
+#include <crtdbg.h>
+// copy the above three lines, run '_CrtDumpMemoryLeaks();' when you want to check for leaks valgrind style, like at bottom of main
+// If Detected memory leaks! appears in debug window there is leaks; if nothing appears, there is no leaks detected;
+// To color code debug output use this: https://marketplace.visualstudio.com/items?itemName=MikeWard-AnnArbor.VSColorOutput
 
+#include <string>
+#include <iostream>
+using namespace std;
 #endif //PCH_H
