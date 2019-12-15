@@ -21,6 +21,9 @@
     <ClInclude Include="1-2-reverse-c-string.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="1-3-is-string-permutation.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -30,6 +33,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="1-2-reverse-c-string.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="1-3-is-string-permutation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

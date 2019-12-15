@@ -1,8 +1,9 @@
 // main.cpp : This file contains the 'main' function. Program execution begins and ends there.
 /*
 * Chapter 1 of Cracking the Coding Interview 5th edition by Gayle Laakmann McDowell
-* Solved by JP Fallon
+* Solved by JP Fallon in CPP C++
 * Questions start on page 73
+* use java style camelCase for naming everything just like in book, use old_dot_net style for tests
 */
 #include "pch.h"
 #include "1-2-reverse-c-string.h"

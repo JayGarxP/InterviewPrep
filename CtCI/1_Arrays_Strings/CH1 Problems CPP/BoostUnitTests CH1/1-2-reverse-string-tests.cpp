@@ -1,5 +1,3 @@
-//#define BOOST_TEST_MODULE chOneRevString
-
 #include <boost/test/unit_test.hpp> // precompiled
 
 // project being tested

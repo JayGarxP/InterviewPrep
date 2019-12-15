@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="1-2-reverse-string-tests.cpp" />
+    <ClCompile Include="1-3-is-string-permutation-tests.cpp" />
     <ClCompile Include="Test.cpp" />
   </ItemGroup>
   <ItemGroup>
