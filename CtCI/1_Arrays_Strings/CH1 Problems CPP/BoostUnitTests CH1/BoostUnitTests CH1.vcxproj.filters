@@ -24,5 +24,8 @@
     <ClCompile Include="1-3-is-string-permutation-tests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="1-4-replace-spaces-tests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

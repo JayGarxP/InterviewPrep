@@ -7,13 +7,29 @@
 */
 #include "pch.h"
 #include "1-2-reverse-c-string.h"
+#include "1-4-replace-spaces.hpp"
+
+#include <stdlib.h>     // for _countof
+#include <stdio.h>      // for printf
+#include <errno.h>      // for return values
 
 int main()
 {
-    std::cout << "Hello World!\n"; 
+	std::cout << "Hello World!\n";
 	// full test of chapter 1: problem 2 reverse c string
 	//testReverse();
-	
+
+	string input = "Mr John Smith    ";
+	string output = "Mr%20John%20Smith";
+
+	char buffer[80];
+	// wow... must declare this before using...
+	rsize_t restrictedSize = sizeof(char) * 80;
+	// copy input string into char buffer
+	//strcpy(buffer, input.c_str()); // bad security... even for this...
+	strcpy_s(buffer, restrictedSize, "Mr John Smith    ");
+	// mangle string in place with URL friendly %20
+	spaceReplaceInPlace(buffer, 80, 11);
 
 	_CrtDumpMemoryLeaks();
 	return 0;

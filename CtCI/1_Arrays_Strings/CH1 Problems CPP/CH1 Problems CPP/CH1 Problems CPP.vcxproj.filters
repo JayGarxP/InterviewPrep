@@ -24,6 +24,9 @@
     <ClInclude Include="1-3-is-string-permutation.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="1-4-replace-spaces.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -36,6 +39,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="1-3-is-string-permutation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="1-4-replace-spaces.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
